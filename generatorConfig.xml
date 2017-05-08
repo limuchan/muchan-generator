@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	
+	<!-- 插件用法及配置 -->
+	
+	<!-- 数据库连接驱动路径,绝对路径 -->
+	<classPathEntry location="" />
+	<context id="mysql_table" targetRuntime="MyBatis3">
+		<!-- 分页插件 -->
+		<plugin type="muchan.generator.plugin.MySqlPagePlugin" >
+			<!-- 分页对象全名 (包名+类名) 默认为 muchan.mybatis.Page -->
+			<property name="page" value="muchan.mybatis.Page" />
+		</plugin>
+		<!-- toString方法插件 -->
+		<plugin type="muchan.generator.plugin.ToStringPlugin" />
+		
+		<!-- 生成的实体类序列化插件 -->
+		<plugin type="muchan.generator.plugin.SerializablePlugin" />
+		
+		<!-- 替换名称插件 -->
+		<plugin type="muchan.generator.plugin.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+		
+		<!-- 给实体类加上注释的插件 -->
+		<plugin type="muchan.generator.plugin.ModelPlugin">
+			<!-- 设置作者的名字 默认为 DemonLi -->
+			 <property name="author" value="" />
+		</plugin>
+		
+		<!-- 自定义注释生成插件,可以生成表字段的注释 -->
+		<commentGenerator type="muchan.generator.plugin.CustomizedCommentGenerator">
+			<property name="suppressDate" value="false" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+		
+		<!-- 数据库连接配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/chat?characterEncoding=utf8" 
+			userId="数据库用户名"
+			password="password">
+		</jdbcConnection>
+		
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!-- 生成的实体类的位置 -->
+		<javaModelGenerator targetPackage="chat.entity.gen"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<!-- 实体类中是否对String类型的属性进行trim操作 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="chat.mapper"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="chat.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- 要生成的实体和对应的来源表 -->
+		<table tableName="table_name" domainObjectName="EntityName" >
+			<!-- 配置主键 -->
+			<generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" /> 
+		    <!-- 表的字段属性类型和实体类数据类型转换 -->
+		    <columnOverride column="ID" property="id" javaType="String" />
+		</table>
+		
+		
+	</context>
+</generatorConfiguration>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+muchan\generator\gen\MyGenerator.class
+muchan\generator\plugin\ModelPlugin.class
+muchan\generator\plugin\SerializablePlugin.class
+muchan\generator\gen\GenerateFiles.class
+muchan\generator\plugin\CustomizedCommentGenerator.class
+muchan\generator\plugin\ToStringPlugin.class
+muchan\generator\plugin\MapperPlugin.class
+muchan\generator\plugin\RenameExampleClassPlugin.class
+muchan\generator\plugin\MySqlPagePlugin.class
